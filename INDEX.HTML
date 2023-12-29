@@ -1,9 +1,459 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PayTm</title>
+ 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      @font-face {
+        font-family: "Inter";
+        src: url("/inter/Inter-Bold.otf");
+        font-weight: 700;
+      }
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+      @font-face {
+        font-family: "Inter";
+        src: url("/inter/Inter-SemiBold.otf");
+        font-weight: 600;
+      }
 
-</body>
-</html>
+      @font-face {
+        font-family: "Inter";
+        src: url("/inter/Inter-Medium.otf");
+        font-weight: 500;
+      }
+
+      @font-face {
+        font-family: "Inter";
+        src: url("/inter/Inter-Regular.otf");
+        font-weight: 400;
+      }
+      .centered-container {
+    text-align: right;
+    margin: 20px;
+	top: 20px;
+}
+
+.centered-container img {
+  width: 528px;
+    position: absolute;
+    top: 250px;
+    right: 0;
+}
+  .sign-in-button {
+	background-color: #00BAF2;
+  color: aliceblue;
+	border-radius: 20px;
+	font-weight: bold; 
+	font-size: 15px; 
+  padding-left: 12px;
+  margin: 0px 0px 0px 9px;
+
+
+}
+.sign-in-icon {
+	padding: 0;
+    width: 32px;
+    height: 32px;
+    margin: 0px 0px 0px 9px;
+}
+
+      body {
+        font-family: "Inter";
+      }
+
+      body::-webkit-scrollbar {
+        width: 0.5em;
+      }
+
+      body::-webkit-scrollbar-track {
+        background-color: #00baf2;
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background-color: #fff;
+      }
+      .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          screens: {
+            sm: "480px",
+            md: "768px",
+            lg: "976px",
+            xl: "1096px",
+          },
+          maxWidth: {
+            "1/2": "50%",
+          },
+          extend: {
+            colors: {
+              bluedark: "#0F4A8A",
+              bluelight: "#00BAF2",
+              bglight: "#F5F7FA",
+              bgfooter: "#F0FBFF",
+              gr1: "#E6E9ED",
+              gr2: "#F6F6F6",
+              hoverbluelight: "#00AFE3",
+              hoverbluedark: "#215893",
+              btnbluedark: "#002970",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <nav
+      class="flex items-center justify-between py-3 max-w-[1270px] w-full xl:py-[17px] px-5 text-[18px] mx-auto font-semibold"
+    >
+    <div class="flex items-center">
+      <i class="fa-solid fa-bars xl:hidden"></i>
+      <a href="LIVE PROJECT OF PAYTM.html">
+          <img
+            class="w-[140px] pl-7 xl:pl-0 xl:w-[180px]"
+            src="pp.png"
+            alt="paytm_logo"
+          />
+      </a>
+  </div>
+          
+  <div class="hidden justify-between items-center w-[757px] xl:flex">
+    <div class="tracking-tight dropdown">
+      <a href="#">Paytm for Consumer</a>
+      <div class="dropdown-content">
+        <a href="#">Payments</a>
+        <a href="#">Ticket booking</a>
+				<a href="#">Financial Services</a>
+      </div>
+    </div>
+    <div class="tracking-tight dropdown">
+      <a href="#">Paytm for Business</a>
+      <div class="dropdown-content">
+        <a href="#">Consumers Payments</a>
+        <a href="#">Business Payments</a>
+        <a href="#">Business Software</a>
+        <a href="#">Financial Service</a>
+        <a href="#">Developer</a>
+        </div>
+
+    </div>
+      <a class="tracking-tight" href="#">Investor Relations</a>
+    <div class="tracking-tight dropdown">
+      <a class="tracking-tight" href="#">Company</a>
+    <div class="dropdown-content">
+      <a href="#">About</a>
+      <a href="#">CSR</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Sustainability</a>
+      </div>
+      </div>
+
+    <a class="tracking-tight" href="#">Career</a>
+  </div>
+  
+      <div
+        class="flex items-center bg-bluelight hover:bg-bluedark rounded-full p-[0px]"
+      >
+        	
+      <a class="sign-in-button" href="D.jpg">Sign In<img class="sign-in-icon" src="pay.png" alt="User Icon">
+      </a>
+        <img 
+          id="btn-logo"
+          class="w-6 xl:w-8"
+          src="images/9fd9626b.svg"
+          alt=""
+        />
+        
+      </div>
+    </nav>
+    <section class="text-center bg-gradient-to-b from-gray-200 to-gray-50">
+      <p class="py-3 font-semibold px-3">
+        No Wallet KYC Required
+        <span class="text-2xl">😊</span>
+        <span class="font-medium">to pay using UPI on Paytm.</span>
+        <a href="https://paytm.com/money-transfer">Learn more.</a>
+      </p>
+    </section>
+        <div class="centered-container">
+          <img src="0000.PNG" alt="right Image"></div>
+
+    <section
+      class="md:flex items-center md:justify-between md:py-[128px] md:pl-8"
+    > <div class="text-center md:text-start m-3 md:w-[40%]">
+      <img
+        class="w-10 md:w-20 mx-auto md:mx-0"
+        src="lam.png" 
+        alt="body image"
+      />
+        <h1
+          class="text-4xl md:text-[54px] md:leading-[65px] my-2 font-bold md:my-12"
+        >
+          India's Most-loved Payments App
+        </h1>
+        <p class="md:text-xl md:font-medium">
+          Recharge & pay bills, book flights & movie tickets, open a savings
+          account, invest in stocks & mutual funds, and do a lot more.
+        </p>
+        <div class="download-button"></div>
+        <a 
+          class="block m-10 w-[260px] mx-auto md:mx-0 bg-black text-white rounded-full px-5 py-2 hover:bg-white hover:text-black border hover:border-black"
+          href="https://apps.apple.com/in/app/paytm-secure-upi-payments/id473941634"</a>
+          Download Paytm App
+          <i class="fa-brands fa-apple"></i>
+          <i class="fa-brands fa-google-play"></i>
+        </a>
+      </div>
+      <div class="md:w-[40%]">
+        <img
+          class="pl-3 md:pl-0 w-[100%]"
+          src="images/1656568118664.webp"
+          alt=""
+        />
+      </div>
+    </section>
+    <!-- Recharge Section -->
+
+    <section class="bg-bluelight p-2 md:p-16 text-white">
+      <h1 class="text-4xl font-bold py-2">Recharge & Pay Bills on Paytm.</h1>
+      <div class="mx-auto flex gap-2 md:gap-9 flex-wrap">
+        <div class="card grow hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg">
+          <div class="w-12 md:w-16">
+            <a href="https://paytm.com/recharge">
+            <img src="1.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            Recharge<br />
+            Prepaid<br />Mobile
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </div>
+      </a>
+        <div
+          class="card grow hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+        >
+          <div class="w-12 md:w-16">
+           <a href="https://paytm.com/electricity-bill-payment">
+            <img src="2.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            Pay<br />
+            Electricity<br />Bill
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </a>
+        </div>
+      </a>
+        <div
+          class="card grow hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+        >
+          <div class="w-12 md:w-16">
+            <a href="https://paytm.com/dth-recharge">
+            <img src="3.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            Recharge<br />
+            DTH<br />Connection
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </a>
+        </div>
+        <div
+          class="card grow hidden md:block hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+        >
+          <div class="w-12 md:w-16">
+            <a href="https://paytm.com/cylinder-gas-recharge">
+            <img src="4.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            Book<br />
+            Gas<br />Cylinder
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </a>
+        </div>
+
+        <div
+          class="card grow hidden md:block hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+        >
+          <div class="w-12 md:w-16">
+            <a href="https://paytm.com/broadband-bill-payment">
+            <img src="6.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            Pay<br />
+            Broadband &<br />Landline Bill
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </a>
+        </div>
+        <div
+        class="card grow hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+      >
+        <div class="w-12 md:w-16">
+         <a href="https://paytm.com/electricity-bill-payment"> 
+          <img src="5.png" alt="" />
+        </div>
+        <p class="text-[10px] md:text-base">
+          Pay<br />
+          Education<br />Fee
+          <i class="fa-solid fa-angle-right"></i>
+        </p>
+      </a>
+      </div>
+
+        <div
+          class="card grow hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+        >
+          <div class="w-12 md:w-16">
+            <a href=""></a>
+            <img src="7.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            All<br />
+            Payment<br />Services
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="bg-bluedark p-2 md:p-16 text-white">
+      <h1 class="text-4xl font-bold py-2 text-center md:text-left">Book & Buy on Paytm</h1>
+      <div class="mx-auto flex gap-2 md:gap-9 flex-wrap">
+        <div class="card grow hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg">
+          <div class="w-12 md:w-16">
+            <a href="https://paytm.com/movies">
+            <img src="a.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            Movie<br />
+            Tickets
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </a>
+        </div>
+        <div
+          class="card grow hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+        >
+          <div class="w-12 md:w-16">
+            <a href="https://tickets.paytm.com/flights/">
+            <img src="b.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            Flight<br />
+            Tickets
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </a>
+        </div>
+
+        <div
+          class="card grow hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+        >
+          <div class="w-12 md:w-16">
+            <a href="https://tickets.paytm.com/bus/">
+            <img src="c.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            Bus<br />
+            Tickets
+          
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </a>
+        </div>
+        <div
+          class="card grow hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+        >
+          <div class="w-12 md:w-16">
+            <a href="https://tickets.paytm.com/trains/">
+            <img src="hhh.jpeg" class="w-full h-full object-cover rounded-full" />
+          
+          </div>
+        
+          <p class="text-[10px] md:text-base">
+            Train<br />
+            Tickets
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </a>
+        </div>
+        <div
+          class="card grow hidden md:block hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+        >
+          <div class="w-12 md:w-16">
+            <a href="https://paytminsurance.co.in/">
+            <img src="f.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            Buy<br />
+            Insurance
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </a>
+        </div>
+
+        <div
+          class="card grow hidden md:block hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+        >
+          <div class="w-12 md:w-16">
+            <a href="https://tickets.paytm.com/international-flights/">
+            <img src="g.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            International<br />
+            Flights
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </a>
+        </div>
+
+        <div
+          class="card grow hover:bg-hoverbluelight py-4 pl-4 w-[18%] lg:w-[11%] rounded-lg"
+        >
+          <div class="w-12 md:w-16">
+            <a href="https://www.paytmmoney.com/">
+            <img src="hh.png" alt="" />
+          </div>
+          <p class="text-[10px] md:text-base">
+            Invest<br />
+            in Stocks
+           
+            <i class="fa-solid fa-angle-right"></i>
+          </p>
+        </p>
+        </div>
+      </div>
+    </section>
+
+    
