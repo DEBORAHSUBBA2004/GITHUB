@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form action="register.php" method="post" id="sign-up-form">
+            <h1>Create Account</h1>
+            <div class="social-container">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-google-plus-g"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+            <span>or use your email for registration</span>
+            <input type="text" name="name" placeholder="Name" required id="signup-name"/>
+            <input type="email" name="email" placeholder="Email" required class="no-paste"/>
+            <input type="password" name="password" placeholder="Password" required class="no-paste"/>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required />
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form action="login.php" method="post" id="login-form">
+            <h1>Sign in</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your account</span>
+            <input type="email" name="email" placeholder="Email" required class="no-paste"/>
+            <input type="password" name="password" placeholder="Password" required class="no-paste"/>
+            <div class="g-recaptcha" data-sitekey="6LdiZPApAAAAAAsNata73ymQRPmR0j09UeUbNhQR"></div>
+            <input type="checkbox" id="remember-me" name="remember-me">
+            <label for="remember-me">Remember Me</label>
+            <a href="#">Forgot your password?</a>
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const MAX_ATTEMPTS = 3;
+    const LOCKOUT_TIME = 2 * 60 * 1000; // 2 minutes in milliseconds
+
+    // Form validation for sign-up form
+    document.getElementById('sign-up-form').addEventListener('submit', function(event) {
+        var name = document.getElementById('signup-name').value;
+        var namePattern = /^[a-zA-Z\s]+$/;
+        
+        if (!namePattern.test(name)) {
+            alert('Name should only contain letters and spaces.');
+            event.preventDefault();
+        }
+    });
+
+    // Prevent paste in no-paste fields
+    var noPasteFields = document.querySelectorAll('.no-paste');
+    noPasteFields.forEach(function(field) {
+        field.addEventListener('paste', function(event) {
+            event.preventDefault();
+        });
+    });
+
+    // Toggle panels
+    document.getElementById('signIn').addEventListener('click', function() {
+        document.getElementById('container').classList.remove('right-panel-active');
+    });
+
+    document.getElementById('signUp').addEventListener('click', function() {
+        document.getElementById('container').classList.add('right-panel-active');
+    });
+
+    // Remember Me functionality
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        var rememberMe = document.getElementById('remember-me').checked;
+        if (rememberMe) {
+            // Store the email in localStorage
+            localStorage.setItem('email', document.querySelector('#login-form input[name="email"]').value);
+            localStorage.setItem('rememberMe', 'true');
+        } else {
+            // Clear the email from localStorage
+            localStorage.removeItem('email');
+            localStorage.removeItem('rememberMe');
+        }
+
+        const email = document.querySelector('#login-form input[name="email"]').value;
+        let lockoutExpiry = localStorage.getItem('lockoutExpiry_' + email);
+
+        // Check if the user is currently locked out
+        if (lockoutExpiry && Date.now() < lockoutExpiry) {
+            alert('Account is locked. Please try again later.');
+            event.preventDefault();
+            return;
+        }
+
+        // This is where you would validate the login with the server.
+        // Assuming we get a response back from the server if login was successful or not.
+        let loginSuccessful = true; // This should be set based on the server response
+
+        if (!loginSuccessful) {
+            let loginAttempts = localStorage.getItem('loginAttempts_' + email) || 0;
+            loginAttempts++;
+
+            if (loginAttempts >= MAX_ATTEMPTS) {
+                localStorage.setItem('lockoutExpiry_' + email, Date.now() + LOCKOUT_TIME);
+                alert('Too many incorrect attempts. Your account is locked for 2 minutes.');
+                event.preventDefault();
+                return;
+            } else {
+                localStorage.setItem('loginAttempts_' + email, loginAttempts);
+            }
+        } else {
+            // Clear login attempts on successful login
+            localStorage.removeItem('loginAttempts_' + email);
+        }
+    });
+
+    // Populate the email field if Remember Me was checked
+    window.addEventListener('load', function() {
+        var rememberMe = localStorage.getItem('rememberMe') === 'true';
+        if (rememberMe) {
+            var storedEmail = localStorage.getItem('email');
+            if (storedEmail) {
+                document.querySelector('#login-form input[name="email"]').value = storedEmail;
+                document.getElementById('remember-me').checked = true;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

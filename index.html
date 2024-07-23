@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Document</title>
+  <style>
+    /* CSS Variables for light and dark modes */
+    :root {
+      --bg-color: #78d1e3;
+      --text-color: #000;
+      --nav-bg-color: white;
+      --nav-text-color: black;
+      --nav-hover-bg-color: #4abbd2;
+      --nav-hover-text-color: white;
+      --container-bg-color: #fff;
+      --container-shadow-color: rgba(255, 215, 0, 0.5);
+      --left-panel-bg-color: #96d6e3;
+      --footer-bg-color: #090909;
+      --footer-text-color: white;
+      --social-icon-color: #fbfafa;
+      --social-icon-hover-color: #1cc9e8;
+    }
+
+    .dark-mode {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --nav-bg-color: #333;
+      --nav-text-color: #fff;
+      --nav-hover-bg-color: #555;
+      --nav-hover-text-color: #fff;
+      --container-bg-color: #444;
+      --container-shadow-color: rgba(0, 0, 0, 0.5);
+      --left-panel-bg-color: #555;
+      --footer-bg-color: #000;
+      --footer-text-color: #ddd;
+      --social-icon-color: #ccc;
+      --social-icon-hover-color: #fff;
+    }
+
+    /* General Styles */
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    nav {
+      background: var(--nav-bg-color);
+      color: var(--nav-text-color);
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: var(--nav-text-color);
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      position: relative;
+      padding: 10px 15px;
+    }
+
+    nav a:hover {
+      background-color: var(--nav-hover-bg-color);
+      color: var(--nav-hover-text-color);
+      box-shadow: 0px 40px 8px rgba(0, 0, 0, 0.1);
+      font-weight: bold;
+      transform: scale(1.05);
+    }
+
+    .logo img {
+      max-width: 100px;
+      vertical-align: middle;
+    }
+
+    .Registration {
+      display: flex;
+      align-items: center;
+    }
+
+    .Registration a {
+      display: block;
+      background-color: #04b2d5;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .Registration a:hover {
+      background-color: #04b2d5;
+    }
+
+    .centered-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+    }
+
+    .bg-shadow-white {
+      background-color: rgb(217, 215, 215);
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper {
+      background-color: var(--bg-color);
+      padding-bottom: 40px;
+    }
+
+    footer {
+      background-color: var(--footer-bg-color);
+      text-align: right;
+      padding: 20px;
+      position: relative;
+      color: var(--footer-text-color);
+    }
+
+    .map-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding-top: 16.25%;
+    }
+
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      border: 0;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin: 0 auto;
+      max-width: 1100px;
+    }
+
+    .carousel-slides {
+      display: flex;
+      transition: transform 0.3s;
+    }
+
+    .container {
+      background-color: var(--container-bg-color);
+      border-radius: 10px;
+      box-shadow: 0 0 10px var(--container-shadow-color);
+      display: flex;
+      flex-direction: row;
+      width: 1100px;
+      max-width: 100%;
+      min-height: 480px;
+      margin: 0;
+      border: 5px solid transparent;
+    }
+
+    .left-panel {
+      width: 50%;
+      background: var(--left-panel-bg-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .left-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px 0 0 10px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      margin: 0 10px;
+      font-size: 24px;
+      color: var(--social-icon-color);
+    }
+
+    .social-links a:hover {
+      color: var(--social-icon-hover-color);
+    }
+
+    .right-panel {
+      width: 50%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .right-panel h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .right-panel p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .right-panel a {
+      padding: 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      margin-top: 20px;
+      background-color: #78d1e3;
+      border-radius: 20px;
+    }
+
+    .copyright {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      background-color: #000e0c;
+      border-top: 1px solid #ddd;
+      color: white;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      color: #000;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+      color: #000;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    /* Theme Toggle Button */
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 24px;
+      margin-right: 20px;
+    }
+
+    /* Popup Styles */
+    .popup {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background-color: var(--container-bg-color);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px var(--container-shadow-color);
+      text-align: center;
+      position: relative;
+    }
+
+    .popup-buttons button {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #04b2d5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .popup-buttons button:hover {
+      background-color: #0299bb;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-color);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Navigation Bar -->
+    <nav>
+      <a class="logo" href="#"><img src="log.png" alt="Logo"></a>
+      <a href="#">Home</a>
+      <div class="dropdown">
+        <a href="#">About</a>
+        <div class="dropdown-content">
+          <a href="#">Academics</a>
+          <a href="#">Non-Academics</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">Project</a>
+        <div class="dropdown-content">
+          <a href="project.html">Winter Project</a>
+        </div>
+      </div>
+      <a href="#">Blog</a>
+      <a href="#">Social</a>
+      <div class="Registration">
+        <a href="login.html">Registration/Login</a>
+      </div>
+      <!-- Theme Toggle Button -->
+      <i class='bx bx-moon theme-toggle' id="theme-toggle"></i>
+    </nav>
+
+    <!-- Add space between navbar and body -->
+    <div style="height: 20px;"></div>
+
+    <!-- Carousel Container -->
+    <div class="carousel-container">
+      <div class="carousel-slides">
+        <!-- Container 1 -->
+        <section>
+          <div class="container" id="container1">
+            <div class="left-panel">
+              <img src="1.png" alt="Description of image">
+            </div>
+            <div class="right-panel">
+              <h1>Hello I am Deborah Subba!</h1>
+              <p>I am a BCA student and love diving into the world of computers and technology. I am super excited to share my journey with you!</p>
+              <a href="#">Hire Me</a>
+            </div>
+          </div>
+        </section>
+        <!-- Container 2 -->
+        <section>
+          <div class="container" id="container2">
+            <div class="left-panel">
+              <img src="download.jpeg" alt="Description of image">
+            </div>
+            <div class="right-panel">
+              <h1>INTEREST</h1>
+              <p>"I'm passionate about music, especially playing the guitar. It's not just a hobby; it's a way for me to express myself creatively and find relaxation. I love exploring different chords and melodies, constantly striving to improve my skills and learn new techniques. Music has always been a big part of my life, and playing the guitar is where I find my greatest joy."</p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container" id="container2">
+            <div class="left-panel">
+              <img src="dev.jpeg" alt="Description of image">
+            </div>
+            <div class="right-panel">
+              <h1>SKILLS AND EXPERIENCE</h1>
+              <p>I know programming languages like Python. Also a little good at making websites with HTML, CSS, and JavaScript.</p>
+              <a href="#">Hire Me</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7094.106215559909!2d88.52623874088138!3d27.24886369404287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a165beeb8ac5%3A0x985e22270d94abce!2sSangkhola%2C%20Sikkim%20737134!5e0!3m2!1sen!2sin!4v1716472105573!5m2!1sen!2sin"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="copyright">
+        &copy; 2024 Your Company Name. All rights reserved.
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="#" target="_blank"><i class='bx bxl-meta'></i></a>
+      <a href="https://www.instagram.com/medhaviskillsuniversity?igsh=MW0zNHl2M3lveXQ4NQ==" target="_blank"><i class='bx bxl-instagram'></i></a>
+      <a href="#" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+      <a href="#" target="_blank"><i class='bx bxl-gmail'></i></a>
+    </div>
+  </footer>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <span class="close" id="close-popup">&times;</span>
+      <h2>Welcome!</h2>
+      <p>Would you like to Sign In or Sign Up?</p>
+      <div class="popup-buttons">
+        <button onclick="window.location.href='login.html'">Sign In</button>
+        <button onclick="window.location.href='login.html'">Sign Up</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    const slides = document.querySelector('.carousel-slides');
+    const totalSlides = document.querySelectorAll('.carousel-slides section').length;
+
+    function showNextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      const translateX = -currentIndex * 100;
+      slides.style.transform = `translateX(${translateX}%)`;
+    }
+
+    setInterval(showNextSlide, 5000); // Change slide every 5 seconds
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        themeToggle.classList.replace('bx-moon', 'bx-sun');
+      } else {
+        themeToggle.classList.replace('bx-sun', 'bx-moon');
+      }
+    });
+
+    // Popup functionality
+    const popup = document.getElementById('popup');
+    const closePopup = document.getElementById('close-popup');
+
+    // Show the popup after 10 seconds
+    setTimeout(() => {
+      popup.style.display = 'flex';
+    }, 10000);
+
+    // Close the popup when the close button is clicked
+    closePopup.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    // Close the popup when clicking outside of it
+    window.addEventListener('click', (event) => {
+      if (event.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+
+</html>
